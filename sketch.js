@@ -63,7 +63,7 @@ function draw()
 }
 
 function fenix(){
-bunny.aarteeumaexplosao();
+minkV1.aarteeumaexplosao();
 aculpaedobolsonaro.budha();
 aculpaedobolsonaro = null;
 } 
