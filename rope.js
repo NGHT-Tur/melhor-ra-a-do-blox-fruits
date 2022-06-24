@@ -24,7 +24,7 @@ class Rope
       
     }
     
-    break()
+      aarteeumaexplosao()
     { //Matter.Composite.clear(this.rope,true);
       this.body = null;
     }
@@ -43,7 +43,7 @@ class Rope
     drawVertices(vertices) 
     {
       beginShape();
-      fill('#FFF717')
+      fill('red')
       noStroke();
       
       for (let i = 0; i < vertices.length; i++) 
