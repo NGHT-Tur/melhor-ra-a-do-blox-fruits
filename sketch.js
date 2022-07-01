@@ -78,9 +78,12 @@ function draw()
   if(linguadegato !== null){
   image(ovoazul,linguadegato.position.x, linguadegato.position.y, 40,55);
   }
-  if(max(linguadegato,minkV3)=== true){
+  if(maxelucas(linguadegato,minkV3)=== true){
   minkV3.changeAnimation("comendo");
-  console.log ("delicioso esse ovo");
+  }
+  if(linguadegato !== null && linguadegato.position.y >= 650){
+  minkV3.changeAnimation("maxquandoperdeuaon");
+  linguadegato = null;
   }
   drawSprites();
 }
@@ -91,7 +94,7 @@ aculpaedobolsonaro.budha();
 aculpaedobolsonaro = null;
 } 
 
-function max(body,sprite){
+function maxelucas(body,sprite){
 if(body !== null){
 var eueainternet = dist(body.position.x,body.position.y,sprite.position.x,sprite.position.y);
 if(eueainternet <= 80){
