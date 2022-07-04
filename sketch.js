@@ -21,6 +21,9 @@ var budhadespertada;
 var onzenabanheira;
 var bob;
 var maxquandoperdeuaon;
+var naomeestressa, quebrandoossos, criseexistencial, sucrilhosebomdemais, criancaquandochorapqobalaosaiuvoando;
+var sacolavoadora;
+var amemamusicaparou;
 
 function preload(){
   minkV2 = loadImage("Rabbit-01.png");
@@ -29,6 +32,11 @@ function preload(){
   onzenabanheira = loadAnimation("blink_1.png","blink_2.png","blink_3.png");
   bob = loadAnimation("eat_0.png","eat_1.png","eat_2.png","eat_3.png","eat_4.png");
   maxquandoperdeuaon = loadAnimation("sad_1.png","sad_2.png","sad_3.png");
+  naomeestressa = loadSound("sound1.mp3");
+  quebrandoossos = loadSound("rope_cut.mp3");
+  criseexistencial = loadSound("sad.wav");
+  sucrilhosebomdemais = loadSound("eating_sound.mp3");
+  criancaquandochorapqobalaosaiuvoando = loadSound("air.wav");
   onzenabanheira.playing = true;
   bob.playing = true;
   maxquandoperdeuaon.playing = true;
@@ -39,6 +47,8 @@ function preload(){
 function setup() 
 {
   createCanvas(500,700);
+  naomeestressa.play();
+  naomeestressa.setVolume(0.6);
   engine = Engine.create();
   world = engine.world;
   onzenabanheira.frameDelay = 15;
@@ -55,7 +65,7 @@ function setup()
   linguadegato = Bodies.circle(300,300,15);
   Matter.Composite.add(minkV1.body, linguadegato);
   aculpaedobolsonaro= new Coelhopretoextremamentepreto(minkV1, linguadegato);
-  minkV3 = createSprite(250,630,100,100);
+  minkV3 = createSprite(420,630,100,100);
   minkV3.addImage (minkV2);
   minkV3.scale = 0.2;
   minkV3.addAnimation("piscando", onzenabanheira);
@@ -66,6 +76,14 @@ function setup()
   budhadespertada.position(220, 30);
   budhadespertada.size(50, 50);
   budhadespertada.mouseClicked(fenix);
+  sacolavoadora = createImg("balloon.png");
+  sacolavoadora.position(10, 250);
+  sacolavoadora.size(150, 100);
+  sacolavoadora.mouseClicked(climaensolarado);
+  amemamusicaparou = createImg("mute.png");
+  amemamusicaparou.position(450, 20);
+  amemamusicaparou.size(50, 50);
+  amemamusicaparou.mouseClicked(climachuvoso);
 }
 
 function draw() 
@@ -80,10 +98,15 @@ function draw()
   }
   if(maxelucas(linguadegato,minkV3)=== true){
   minkV3.changeAnimation("comendo");
+  sucrilhosebomdemais.play();
+  sucrilhosebomdemais.setVolume(10);
   }
   if(linguadegato !== null && linguadegato.position.y >= 650){
   minkV3.changeAnimation("maxquandoperdeuaon");
   linguadegato = null;
+  naomeestressa.stop();
+  criseexistencial.play();
+  criseexistencial.setVolume(0.9);
   }
   drawSprites();
 }
@@ -92,6 +115,8 @@ function fenix(){
 minkV1.aarteeumaexplosao();
 aculpaedobolsonaro.budha();
 aculpaedobolsonaro = null;
+quebrandoossos.play();
+quebrandoossos.setVolume(5);
 } 
 
 function maxelucas(body,sprite){
@@ -105,4 +130,18 @@ return true;
 return false;
 }
 }
+}
+
+function climaensolarado(){
+  Matter.Body.applyForce(linguadegato, {x:0, y:0}, {x:0.01, y:0});
+  criancaquandochorapqobalaosaiuvoando.play();
+  criancaquandochorapqobalaosaiuvoando.setVolume(0.3);
+}
+
+function climachuvoso(){
+  if(naomeestressa.isPlaying()){
+  naomeestressa.stop();
+  }else{
+  naomeestressa.play();
+  }
 }
